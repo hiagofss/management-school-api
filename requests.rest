@@ -1,0 +1,43 @@
+@baseUrl = http://localhost
+@port = 8000
+@host = {{baseUrl}}:{{port}}
+@contentType = application/json
+
+### Check api status
+# @name checkApiStatus
+GET {{host}}/
+Accept: application/json
+
+### Gel all contacts
+# @name getAllContacts
+GET {{host}}/contacts
+
+### Get contact by id
+@contactIdDynamic = {{getAllContacts.response.body.$[0].id}}
+
+GET {{host}}/contacts/{{contactIdDynamic}}
+
+### Post new contact
+# @prompt contactName
+POST {{host}}/contacts
+Content-Type: {{contentType}}
+
+{
+    "name": "{{contactName}}",
+    "phone": "{{$randomInt 1111111111 9999999999}}",
+    "email": "{{contactName}}@test.com"
+}
+
+### Edit new contact
+# @prompt contactName
+PUT {{host}}/contacts/{{contactId}}
+Content-Type: {{contentType}}
+
+{
+    "name": "{{contactName}}",
+    "phone": "{{$randomInt 1111111111 9999999999}}",
+    "email": "{{contactName}}@test.com"
+}
+
+### Get category by slug
+DELETE {{host}}/contacts/{{contactId}}
