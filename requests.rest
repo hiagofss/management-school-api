@@ -18,26 +18,28 @@ GET {{host}}/students
 GET {{host}}/students/{{studentIdDynamic}}
 
 ### Post new contact
-# @prompt contactName
+# @prompt studentName
 POST {{host}}/students
 Content-Type: {{contentType}}
 
 {
-    "name": "{{contactName}}",
+    "name": "{{studentName}}",
     "document": "{{$randomInt 1111111111 9999999999}}",
-    "email": "{{contactName}}@test.com"
+    "email": "{{studentName}}@test.com"
 }
 
-### Edit new contact
-# @prompt contactName
+### Edit student
+# @prompt studentId
+# @prompt studentName
 PUT {{host}}/students/{{studentId}}
 Content-Type: {{contentType}}
 
 {
-    "name": "{{contactName}}",
+    "name": "{{studentName}}",
     "phone": "{{$randomInt 1111111111 9999999999}}",
-    "email": "{{contactName}}@test.com"
+    "email": "{{studentName}}@test.com"
 }
 
-### Get category by slug
+### Delete student
+# @prompt studentId
 DELETE {{host}}/students/{{studentId}}
