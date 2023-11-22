@@ -24,6 +24,7 @@ Content-Type: {{contentType}}
 
 {
     "name": "{{studentName}}",
+    "phone": "{{$randomInt 1111111111 9999999999}}",
     "document": "{{$randomInt 1111111111 9999999999}}",
     "email": "{{studentName}}@test.com"
 }
@@ -37,9 +38,14 @@ Content-Type: {{contentType}}
 {
     "name": "{{studentName}}",
     "phone": "{{$randomInt 1111111111 9999999999}}",
+    "document": "{{$randomInt 1111111111 9999999999}}",
     "email": "{{studentName}}@test.com"
 }
 
 ### Delete student
 # @prompt studentId
 DELETE {{host}}/students/{{studentId}}
+
+### Find student by document
+# @prompt studentDocument
+GET {{host}}/students/document?document={{studentDocument}}

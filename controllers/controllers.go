@@ -87,3 +87,19 @@ func DeleteStudent(c *gin.Context) {
 		"statusCode": 200,
 		"message":    "Student deleted successfully"})
 }
+
+func FindStudent(c *gin.Context) {
+	var student models.Student
+	document := c.Query("document")
+
+	database.DB.First(&student, "document = ?", document)
+
+	if student.ID == 0 {
+		c.JSON(404, gin.H{
+			"statusCode": 404,
+			"message":    "Student not found"})
+		return
+	}
+
+	c.JSON(200, student)
+}
