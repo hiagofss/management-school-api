@@ -1,10 +1,12 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"management-school/database"
+	"management-school/routes"
 )
 
 func main() {
-	r := gin.Default()
-	r.Run("localhost:8000")
+	database.ConnectDatabase()
+
+	routes.HandleRequests()
 }

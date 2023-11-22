@@ -8,29 +8,29 @@
 GET {{host}}/
 Accept: application/json
 
-### Gel all contacts
-# @name getAllContacts
-GET {{host}}/contacts
+### Gel all students
+# @name getAllStudents
+GET {{host}}/students
 
-### Get contact by id
-@contactIdDynamic = {{getAllContacts.response.body.$[0].id}}
+### Get student by id
+@studentIdDynamic = {{getAllStudents.response.body.$[0].ID}}
 
-GET {{host}}/contacts/{{contactIdDynamic}}
+GET {{host}}/students/{{studentIdDynamic}}
 
 ### Post new contact
 # @prompt contactName
-POST {{host}}/contacts
+POST {{host}}/students
 Content-Type: {{contentType}}
 
 {
     "name": "{{contactName}}",
-    "phone": "{{$randomInt 1111111111 9999999999}}",
+    "document": "{{$randomInt 1111111111 9999999999}}",
     "email": "{{contactName}}@test.com"
 }
 
 ### Edit new contact
 # @prompt contactName
-PUT {{host}}/contacts/{{contactId}}
+PUT {{host}}/students/{{studentId}}
 Content-Type: {{contentType}}
 
 {
@@ -40,4 +40,4 @@ Content-Type: {{contentType}}
 }
 
 ### Get category by slug
-DELETE {{host}}/contacts/{{contactId}}
+DELETE {{host}}/students/{{studentId}}
