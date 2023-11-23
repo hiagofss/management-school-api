@@ -24,8 +24,8 @@ Content-Type: {{contentType}}
 
 {
     "name": "{{studentName}}",
-    "phone": "{{$randomInt 1111111111 9999999999}}",
-    "document": "{{$randomInt 1111111111 9999999999}}",
+    "phone": "{{$randomInt 11111111111 99999999999}}",
+    "document": "{{$randomInt 11111111111 99999999999}}",
     "email": "{{studentName}}@test.com"
 }
 
