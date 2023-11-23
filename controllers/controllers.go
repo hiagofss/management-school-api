@@ -6,8 +6,20 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	_ "github.com/swaggo/swag/example/celler/httputil"
 )
 
+// ShowStudents godoc
+// @Summary      List all students
+// @Description  get students
+// @Tags         students
+// @Accept       json
+// @Produce      json
+// @Success      200  {array}   models.Student
+// @Failure      400  {object}  httputil.HTTPError
+// @Failure      404  {object}  httputil.HTTPError
+// @Failure      500  {object}  httputil.HTTPError
+// @Router       /students [get]
 func ShowStudents(c *gin.Context) {
 	var students []models.Student
 

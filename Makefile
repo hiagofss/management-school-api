@@ -10,3 +10,6 @@ dcup:
 .PHONY: dcdown
 dcdown:
 	docker compose down
+.PHONY: gen-docs
+gen-docs:
+	swag init --pd --parseInternal --parseDepth 1
