@@ -114,3 +114,20 @@ func FindStudent(c *gin.Context) {
 
 	c.JSON(200, student)
 }
+
+func RenderIndexPage(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"title":   "Management School - Home",
+		"message": "Welcome to Management School",
+	})
+}
+
+func RenderStudentsPage(c *gin.Context) {
+	var allStudents []models.Student
+	database.DB.Find(&allStudents)
+
+	c.HTML(http.StatusOK, "students.html", gin.H{
+		"title":    "Management School - Students",
+		"students": allStudents,
+	})
+}
