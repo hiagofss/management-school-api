@@ -9,6 +9,8 @@ import (
 func HandleRequests() {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*")
+	r.Static("/assets", "./assets")
+	r.NoRoute(controllers.NotFound)
 
 	r.GET("/students", controllers.ShowStudents)
 	r.GET("/students/:id", controllers.ShowStudent)

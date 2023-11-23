@@ -131,3 +131,10 @@ func RenderStudentsPage(c *gin.Context) {
 		"students": allStudents,
 	})
 }
+
+func NotFound(c *gin.Context) {
+	c.HTML(http.StatusNotFound, "404.html", gin.H{
+		"title":   "Management School - 404",
+		"message": "Page not found",
+	})
+}
