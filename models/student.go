@@ -7,8 +7,8 @@ import (
 
 type Student struct {
 	gorm.Model
-	Name     string `json:"name" validate:"nonzero" validate:"regexp=^[a-zA-Z ]*$"`
-	Email    string `json:"email" gorm:"unique" validate:"regexp=^[0-9a-z]+@[0-9a-z]+(\\.[0-9a-z]+)+$"`
+	Name     string `json:"name" validate:"nonzero, regexp=^[a-zA-Z ]*$"`
+	Email    string `json:"email" gorm:"unique" validate:"regexp=^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"`
 	Document string `json:"document" validate:"len=11, regexp=^[0-9]*$"`
 	// Birthdate *time.Time `json:"birthdate"`
 	// Grade     int `json:"grade"`

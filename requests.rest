@@ -19,12 +19,12 @@ GET {{host}}/students/{{studentIdDynamic}}
 
 ### Post new contact
 # @prompt studentName
+  # "phone": "{{$randomInt 11111111111 99999999999}}",
 POST {{host}}/students
 Content-Type: {{contentType}}
 
 {
     "name": "{{studentName}}",
-    "phone": "{{$randomInt 11111111111 99999999999}}",
     "document": "{{$randomInt 11111111111 99999999999}}",
     "email": "{{studentName}}@test.com"
 }
@@ -48,4 +48,4 @@ DELETE {{host}}/students/{{studentId}}
 
 ### Find student by document
 # @prompt studentDocument
-GET {{host}}/students/document?document={{studentDocument}}
+GET {{host}}/students/find?document={{studentDocument}}
